@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Source:
+
+# Click "Allow" remotely. Works until 10.14 (Mojave).
+# Untested with 10.15 (Catalina) and newer
+
+# Move the System Preferences window to the top-left corner first or update
+# the coordinates with new ones.
+
+osascript -e 'tell application "System Events" to click at {570, 473}'

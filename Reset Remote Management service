@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Source:
+
+# Reset Remote Management. Useful when ARD cannot access a Mac's screen remotely
+# but can still send UNIX commands.
+
+# run as root
+sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -allowAccessFor -allUsers -privs -all -clientopts -setmenuextra -menuextra yes

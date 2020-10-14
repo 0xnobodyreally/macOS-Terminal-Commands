@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Source:
+
+# Works until 10.14 (Mojave). Untested with 10.15 (Catalina) and newer
+
+# Replace Application name
+mdls -name kMDItemVersion "/Applications/Microsoft Word.app"

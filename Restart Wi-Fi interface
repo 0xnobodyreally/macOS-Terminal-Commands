@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Source:
+
+# Restart Wi-Fi interface (turn OFF and ON)
+
+# Run as root
+networksetup -setairportpower "Wi-Fi" off && networksetup -setairportpower "Wi-Fi" on

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Source: https://macreports.com/mac-spotlight-search-not-working-fix/
+
+# This command will erase and rebuild Spotlight's index
+sudo mdutil -E /

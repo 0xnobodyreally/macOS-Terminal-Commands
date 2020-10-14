@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Source:
+
+# Set volume (0: off, 10: max volume)
+
+# run as root
+sudo osascript -e "set Volume 4"

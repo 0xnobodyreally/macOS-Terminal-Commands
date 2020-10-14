@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Source:
+
+# run as root
+last |grep "logged in"

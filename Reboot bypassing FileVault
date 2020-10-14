@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Source:
+
+# Run this directly from the Terminal or via SSH. it won't work from ARD
+sudo fdesetup authrestart
