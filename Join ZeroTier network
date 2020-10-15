@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ZeroTier_Network_ID="your ZeroTier network ID"
+
+zerotier-cli join $ZeroTier_Network_ID

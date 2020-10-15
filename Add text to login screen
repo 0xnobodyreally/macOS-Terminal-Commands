@@ -5,5 +5,5 @@
 # Text to add:
 TEXT_TO_ADD="Hands off my computer! :)"
 
-# Run as root
+# Run as root in Apple Remote Desktop
 sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "$TEXT_TO_ADD"

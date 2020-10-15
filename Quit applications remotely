@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Run as root in Apple Remote Desktop
+        
+
+osascript -e 'quit app "Microsoft Excel"';
+osascript -e 'quit app "Microsoft PowerPoint"';
+osascript -e 'quit app "Microsoft Outlook"';
+osascript -e 'quit app "Microsoft Word"'

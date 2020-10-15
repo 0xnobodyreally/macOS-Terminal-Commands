@@ -5,5 +5,5 @@
 # This command will prevent the remote computer from returning to the login
 # screen when disconnecting from Apple Remote Desktop
 
-# run as root
+# Run as root in Apple Remote Desktop
 defaults write /Library/Preferences/com.apple.RemoteManagement RestoreMachineState -bool NO

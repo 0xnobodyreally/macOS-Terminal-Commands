@@ -4,5 +4,5 @@
 
 # Restart Wi-Fi interface (turn OFF and ON)
 
-# Run as root
+# Run as root in Apple Remote Desktop
 networksetup -setairportpower "Wi-Fi" off && networksetup -setairportpower "Wi-Fi" on

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Run as root in Apple Remote Desktop
+
+# User to promote or demote:
+USERNAME="username"
+
+
+# Give admin right to a user
+sudo dseditgroup -o edit -a $USERNAME -t user admin
+
+
+# Revoke admin right from a user
+sudo dseditgroup -o edit -d $USERNAME -t user admin

@@ -1,0 +1,71 @@
+#!/bin/bash
+
+# Run as root in Apple Remote Desktop
+        
+# Extension Attribute to check for the state of Adobe Flash Update Settings
+#
+# Modified and Combined by Jeffro@isd728 28-Feb-2018
+#
+# Inspriation and Adoptions from Dan K. Snelson 06-Nov-2014, 22-Apr-2016, by chrisjuno 03-Mar-2016, by Berrier 17-Apr-2014
+# Inspired by: https://jamfnation.jamfsoftware.com/discussion.html?id=10340
+# and by: https://jamfnation.jamfsoftware.com/discussion.html?id=10340#responseChild113904
+
+function flashUpdateStatus()
+{
+flashDirectory="/Library/Internet Plug-Ins/Flash Player.plugin" # Flash Player plug-in
+if [ -d "${flashDirectory}" ]; then
+    # Flash Player.plugin exists; check its setting
+    flashFile="/Library/Application Support/Macromedia/mms.cfg" # Preference
+    if [ -f "${flashFile}" ] ; then
+        # Read preference settings
+        AutoUpdateDisable=$( /usr/bin/grep 'AutoUpdateDisable' /Library/Application\ Support/Macromedia/mms.cfg | /usr/bin/awk -F= '{ print $2 }' )
+        SilentAutoUpdateEnable=$( /usr/bin/grep 'SilentAutoUpdateEnable' /Library/Application\ Support/Macromedia/mms.cfg | /usr/bin/awk -F= '{ print $2 }' )
+
+        case ${AutoUpdateDisable}:${SilentAutoUpdateEnable} in
+            1:0)    result="Never" ;;         # AutoUpdateDisable=1 and SilentAutoUpdateEnable=0
+            0:0)    result="Notify" ;;        # AutoUpdateDisable=0 and SilentAutoUpdateEnable=0
+            0:1)    result="Allow" ;;         # AutoUpdateDisable=0 and SilentAutoUpdateEnable=1
+        esac
+    else
+        result="Notify - default"
+    fi
+else
+    result="Not installed"
+fi
+}
+
+flashUpdateStatus
+
+echo ""
+echo "<result>${result}</result>"
+echo ""
+
+if [ "${result}" != "Allow" ]; then
+     if [ -f "${flashFile}" ] ; then
+        # Flash Player is installed, has been launched and mms.cfg exists
+        # let's configure it to Auto Update
+
+        function AppleScript_CAT()
+        {
+            CAT_script=`cat > "${flashFile}" << EOF
+AutoUpdateDisable=0
+SilentAutoUpdateEnable=1
+DisableAnalytics=1
+EOF`
+}
+        AppleScript_CAT
+    else
+        # mms.cfg doesn't exsist
+        mkdir "/Library/Application Support/Macromedia/"
+        echo "AutoUpdateDisable=0" >> "$flashFile"
+        echo "SilentAutoUpdateEnable=1" >> "$flashFile"
+    fi
+
+flashUpdateStatus
+
+echo ""
+echo "<result>${result}</result>"
+echo ""
+fi
+
+exit 0

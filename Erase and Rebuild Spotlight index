@@ -2,5 +2,7 @@
 
 # Source: https://macreports.com/mac-spotlight-search-not-working-fix/
 
+# Run as root in Apple Remote Desktop
+
 # This command will erase and rebuild Spotlight's index
 sudo mdutil -E /

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Run as root in Apple Remote Desktop
+
+# Add, change or remove as necessary. Profiles are installed in the order specified.
+
+/usr/bin/profiles -I -F "/path/to/my/Trust_Profile_for_your_company.mobileconfig";
+
+/usr/bin/profiles -I -F "/path/to/my/Enrollment_Profile.mobileconfig"

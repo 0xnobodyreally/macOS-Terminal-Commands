@@ -4,5 +4,5 @@
 
 # Set volume (0: off, 10: max volume)
 
-# run as root
+# Run as root in Apple Remote Desktop
 sudo osascript -e "set Volume 4"

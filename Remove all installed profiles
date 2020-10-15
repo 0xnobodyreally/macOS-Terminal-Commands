@@ -3,4 +3,4 @@
 # Source:
 
 # Run as root in Apple Remote Desktop
-last |grep "logged in"
+sudo /usr/bin/profiles -D

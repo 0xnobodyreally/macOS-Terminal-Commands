@@ -2,7 +2,45 @@
 
 # Source:
 
-# run as root
+# Run as root in Apple Remote Desktop
 sudo dsconfigldap -r "192.168.1.252";
 
-sudo dsconfigldap -sfa "192.168.1.252" -n "server_FQDN.local" -u diradmin -p "diradmin_password" -N
+sudo dsconfigldap -sfa "192.168.1.252" -n "server_FQDN.local" -u $Directory_Admin -p "$Directory_Admin_Password" -N
+
+
+
+#!/bin/bash
+
+server_IP="192.168.1.252"
+server_FQDN="server_FQDN.local"
+
+Directory_Admin="diradmin"
+Directory_Admin_Password="diradmin password"
+
+# unbind from server_IP
+sudo dsconfigldap -r $server_IP;
+
+
+if [ $? -eq 0 ]; then
+	echo "Unbind from $server_IP successful"
+else
+	echo "Unbind from $server_IP failed, trying to unbind $server_FQDN"
+	sudo dsconfigldap -r $server_FQDN;
+
+	if [ $? -eq 0 ]; then
+		echo "Unbind from $server_FQDN successful"
+	else
+		echo "Unbind from $server_FQDN failed"
+	fi
+
+fi
+
+echo "Binding to $server_IP"
+sudo dsconfigldap -sfa "192.168.1.252" -n "server.local" -u diradmin -p "f00tball" -N
+
+
+if [ $? -eq 0 ]; then
+	echo "Bind to $server_IP successful"
+else
+	echo "Bind to $server_IP failed"
+fi

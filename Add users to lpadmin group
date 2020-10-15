@@ -5,5 +5,5 @@
 # Add all users to "lpadmin" group. Useful to allow users to add/remove and
 # restore paused printers.
 
-# Run as root
+# Run as root in Apple Remote Desktop
 /usr/sbin/dseditgroup -o edit -n /Local/Default -a everyone -t group lpadmin
