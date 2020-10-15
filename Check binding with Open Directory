@@ -1,3 +1,3 @@
 #!/bin/bash
 
-defaults write ~/Library/Preferences/com.microsoft.autoupdate2 WhenToCheck 0
+odutil show nodenames | grep LDAPv3/
