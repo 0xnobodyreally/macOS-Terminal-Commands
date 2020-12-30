@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Run as root in Apple Remote Desktop
+
+
+curl -s http://www.getmacapps.com/raw/3 | sh

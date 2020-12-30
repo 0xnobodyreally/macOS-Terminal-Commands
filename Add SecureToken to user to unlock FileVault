@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Source: https://travellingtechguy.eu/mojave-10-14-2-and-secure-tokens-it-works/
+
+# To grant another user a Secure Token:
+# * Run as Root in Apple Remote Desktop *
+
+adminUsername="admin"
+adminPassword="admin_passsword"
+
+receivingUsername="username_of_receiving_user"
+receivingUsernamePassword="password_of_receiving_user"
+
+sysadminctl -adminUser $adminUsername -adminPassword $adminPassword -secureTokenOn $receivingUsername -password $receivingUsernamePassword
+
+
+# When using the command manually in terminal, you can use the ‘interactive’
+# flag to prompt for the passwords:
+
+# sudo sysadminctl interactive -secureTokenOn receivingUsername -password -
+
+# (The final ‘-‘ is to obfuscate the password in the prompt, but you could
+# write it in clear text instead of the ‘-‘ if you really want to)

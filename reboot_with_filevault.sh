@@ -1,12 +1,7 @@
-#!/bin/bash
-
-
-# IMPORTANT! Run this directly from the Terminal or via SSH. Doesn't work from ARD
-sudo fdesetup authrestart
+#!/bin/sh
 
 # rename this script in "reboot" and move it to /usr/local/bin
 # sudo chown root:wheel /usr/local/bin/reboot
-
 
 FVStatus=`fdesetup status`
 # echo "Status: $FVStatus"  #
